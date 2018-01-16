@@ -381,7 +381,7 @@ public class wordsGen extends javax.swing.JFrame {
             w = in.next();
             for(int i = 0; i < l.length(); i++)
             {
-                if(n == w.length() && w.contains(w)) 
+                if(n == w.length() && w.contains(l.charAt(i)+"")) 
                 {  words.add(w); break;  }
             }            
         }
@@ -399,7 +399,7 @@ public class wordsGen extends javax.swing.JFrame {
             w = in.next();
             for(int i = 0; i < l.length(); i++)
             {
-                if( w.contains(w)) 
+                if( w.contains(l.charAt(i)+"")) 
                 {  words.add(w); break; }
             }            
         }
