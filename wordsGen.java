@@ -1,8 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * To help one in answering a word scramble puzzle, this program
+ * generate words from given sets of characters. the words generated
+ * in this file came from a words.txt file that I copied from 
+ * "http://www.mieliestronk.com/wordlist.html" which is clearly not mine.
+ * To be consice, this program is simply a word sorter; nonetheless, I want
+ * to call it word generator.
  */
+
 package cheat;
 import java.awt.Component;
 import java.io.File;
@@ -12,9 +16,10 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 /**
- *
- * @author Michael
+ * @author Michael Gilbert
+ * @version 01-16-18
  */
 public class wordsGen extends javax.swing.JFrame {
 
@@ -29,6 +34,7 @@ public class wordsGen extends javax.swing.JFrame {
     Vector prev = new Vector(); // stores previous
     boolean caps = false, haveEveryLetter = true; // markers
     
+    //update the result text area
     private void printS(Vector in)
     {       
         prev = in;
@@ -73,7 +79,7 @@ public class wordsGen extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        showaAllBtn = new javax.swing.JButton();
         resultsCounter = new javax.swing.JLabel();
         jToggleButton2 = new javax.swing.JToggleButton();
         selector = new javax.swing.JButton();
@@ -139,10 +145,10 @@ public class wordsGen extends javax.swing.JFrame {
 
         jLabel2.setText("Number(s) of letters in the word");
 
-        jButton8.setText("Show All");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        showaAllBtn.setText("Show All");
+        showaAllBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                showaAllBtnActionPerformed(evt);
             }
         });
 
@@ -203,7 +209,7 @@ public class wordsGen extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(showaAllBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(398, 398, 398)
@@ -239,7 +245,7 @@ public class wordsGen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selector, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(showaAllBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -250,18 +256,20 @@ public class wordsGen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //generate word of length 2
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        try {
+        try{
             if(haveEveryLetter)  printS(getWords(2,getChars()));
             else printS(getContains(2,getChars()));
-        } catch (FileNotFoundException ex) {
+        }  catch (FileNotFoundException ex)  {
           JOptionPane.showMessageDialog(rootPane, 
                   "File not Found!\n Include the 'word.txt' file in this direcory.");
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    //generate word of length 1
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             if(haveEveryLetter)  printS(getWords(1,getChars()));
@@ -271,7 +279,8 @@ public class wordsGen extends javax.swing.JFrame {
                     "File not Found!\n Include the 'word.txt' file in this direcory.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    //generate word of length 3
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             if(haveEveryLetter)  printS(getWords(3,getChars()));
@@ -281,7 +290,8 @@ public class wordsGen extends javax.swing.JFrame {
                     "File not Found!\n Include the 'word.txt' file in this direcory.");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
+    //generate word of length 5
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
             if(haveEveryLetter)  printS(getWords(5,getChars()));
@@ -291,7 +301,8 @@ public class wordsGen extends javax.swing.JFrame {
                     "File not Found!\n Include the 'word.txt' file in this direcory.");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
+    //generate word of length 4
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             if(haveEveryLetter)  printS(getWords(4,getChars()));
@@ -301,7 +312,8 @@ public class wordsGen extends javax.swing.JFrame {
                     "File not Found!\n Include the 'word.txt' file in this direcory.");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    
+    //generate word of length 6
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
             if(haveEveryLetter)  printS(getWords(6,getChars()));
@@ -311,8 +323,9 @@ public class wordsGen extends javax.swing.JFrame {
                     "File not Found!\n Include the 'word.txt' file in this direcory.");
         }
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    
+    //generate word of any length
+    private void showaAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showaAllBtnActionPerformed
         try 
         {
             if(haveEveryLetter)  printS(getAllWords(getChars()));
@@ -321,8 +334,9 @@ public class wordsGen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, 
                     "File not Found!\n Include the 'word.txt' file in this direcory.");
         }
-    }//GEN-LAST:event_jButton8ActionPerformed
-
+    }//GEN-LAST:event_showaAllBtnActionPerformed
+    
+    //change to uppercase <-> lowercase
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         if(caps)
         {
@@ -335,16 +349,20 @@ public class wordsGen extends javax.swing.JFrame {
             printS(prev);
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
-
+    
+    //clear input
     private void inputFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputFieldMousePressed
         inputField.setText("");
     }//GEN-LAST:event_inputFieldMousePressed
 
+    //output must contain only characters from input 
+    //or output must contain atleaset one char from input
     private void selectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorActionPerformed
         if(haveEveryLetter){ haveEveryLetter = false; selector.setText("Some");}
         else {haveEveryLetter = true; selector.setText("All"); }
     }//GEN-LAST:event_selectorActionPerformed
     
+    //change char at certain index
     private String set(String s, int indx)
     {
         char [] temp = s.toCharArray();
@@ -444,7 +462,7 @@ public class wordsGen extends javax.swing.JFrame {
     }
     
     
-    /**
+    /** Main method
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -487,7 +505,6 @@ public class wordsGen extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -495,6 +512,7 @@ public class wordsGen extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel resultsCounter;
     private javax.swing.JButton selector;
+    private javax.swing.JButton showaAllBtn;
     private javax.swing.JTextArea text;
     // End of variables declaration//GEN-END:variables
 }
