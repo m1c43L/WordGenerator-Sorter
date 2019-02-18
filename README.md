@@ -1,12 +1,17 @@
 # WordGenerator-Sorter
 Simple word generator...
 
- * To help one answering word games, this program
- * generate words from given sets of characters. the words generated
- * in this program came from a words.txt file that I copied from 
- * "http://www.mieliestronk.com/wordlist.html" which is not mine.
-
+###   How it works:
  
+ * This program generate words from given sets of characters.
+ * The words generatedin this program came from a words.txt file.
+  
+###   Copyright:
+   
+ * words.tx files was coppied from "http://www.mieliestronk.com/wordlist.html".
+
+ ### Description:
+
  The program contains a straigthforwards GUI that is very easy to use. 
  simply enter the sequnce of characters you want to be in a word then 
  by pressing 1, 2, 3, 4, 5, 6, or showall, it will generate words from the
